@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python → Open Source Roadmap Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-mark">Py</div>
+    <h1>Roadmap tracker</h1>
+    <p class="sub">Enter your 8-digit code. First time in, it creates your progress profile — use the same code again to pick up where you left off.</p>
+
+    <div class="code-input-row">
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+      <input class="code-digit" inputmode="numeric" maxlength="1" />
+    </div>
+    <div class="login-hint" id="loginHint"></div>
+
+    <div class="remember-row">
+      <span class="remember-label">Keep me logged in</span>
+      <button class="toggle" id="rememberToggle" type="button" aria-label="Keep me logged in"></button>
+    </div>
+
+    <button class="btn-primary" id="loginSubmit" disabled>Continue</button>
+
+    <p class="login-foot">Your code is hashed in your browser before it's sent anywhere. Anyone with the same 8 digits can open the same profile, so treat it like a PIN, not a real password.</p>
+
+    <div class="config-warning" id="configWarning" style="display:none">
+      Supabase isn't configured yet. Open <code>config.js</code> and paste in your project URL and anon key, then run <code>schema.sql</code> in your Supabase SQL editor. See README.md for the full walkthrough.
+    </div>
+  </div>
+</div>
+
+<!-- ================= APP SHELL ================= -->
+<div class="app-shell" id="appShell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="brand-row">
+        <div class="brand-mark"></div>
+        <div>
+          <div class="brand-title">Roadmap tracker</div>
+          <div class="brand-sub">305 topics · 20 levels</div>
+        </div>
+      </div>
+      <div class="overall-ring-row">
+        <span class="ring-pct" id="overallPct">0%</span>
+        <div class="overall-bar-track"><div class="overall-bar-fill" id="overallBarFill" style="width:0%"></div></div>
+      </div>
+      <div class="overall-caption" id="overallCaption">0 of 305 topics comfortable or better</div>
+    </div>
+
+    <div class="sidebar-search">
+      <input class="search-input" id="searchInput" placeholder="Search topics…" />
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="not_started">Not started</button>
+        <button class="chip" data-filter="learning">Learning</button>
+        <button class="chip" data-filter="independent">Independent</button>
+        <button class="chip" data-filter="comfortable">Comfortable</button>
+        <button class="chip" data-filter="can_teach">Can teach</button>
+      </div>
+    </div>
+
+    <nav class="level-nav" id="levelNav"></nav>
+
+    <div class="sidebar-foot">
+      <span class="code-badge" id="codeBadge">signed in</span>
+      <button class="logout-btn" id="logoutBtn">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="main-top">
+      <div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        <h1 class="page-title">Python → Open Source Progression</h1>
+        <p class="page-desc">Track every topic from fundamentals to open-source contribution. Tick the box for a quick mark, or use the dropdown for a precise status — everything saves to your profile automatically.</p>
+      </div>
+      <div class="save-indicator">
+        <span class="save-dot" id="saveDot"></span>
+        <span id="saveLabel">All changes saved</span>
+      </div>
+    </div>
+
+    <div id="levelsContainer"></div>
+    <div id="referenceContainer"></div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="roadmap-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
