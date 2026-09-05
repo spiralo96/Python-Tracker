@@ -1,6 +1,5 @@
 # Python → Open Source Roadmap Tracker
 
-A dark-mode, self-hosted recreation of your `python_open_source_progression.md`
 roadmap: all 305 topics across 20 levels, each with a status dropdown, a
 one-click "done" checkbox, and a colored status indicator — plus the
 milestones, parallel tracks, and core-principle sections as reference reading.
